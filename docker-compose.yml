@@ -8,3 +8,11 @@ services:
     volumes:
       - ./public:/usr/share/nginx/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+  node-env:
+    build: node-env
+    image: node-custom
+    container_name: node-env
+    tty: true
+    volumes:
+      - .:/home/node/app
