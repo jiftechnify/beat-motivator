@@ -17,11 +17,37 @@ BPI のように自分の武器を測るのではなく、日々の成長を記�
 - ゆくゆくは BPI manager さんのようにローカルにデータ持っておきたい
 
 ## ローカル開発手順
-1. Dockerが入っていなければインストールする https://www.docker.com/get-started
-2. コマンドからプロジェクトディレクトリ(docker-compose.ymlがあるディレクトリ)に移動する
-3. ```docker-compose up -d```を実行
-4. http://localhost:8080/ にアクセス
-5. 画面が表示されたらOK
+
+### Docker コンテナのセットアップ
+
+1. Docker が入っていなければインストールする https://www.docker.com/get-started
+2. コマンドからプロジェクトディレクトリ(docker-compose.yml があるディレクトリ)に移動する
+3. 初回のみ、`docker-compose build`を実行
+   - Node.js 環境用のカスタムイメージをビルドするため
+4. `docker-compose up -d`を実行
+
+### Node.js 環境コンテナで作業する
+
+#### コマンドラインの場合
+
+1. `docker exec -it node-env /bin/bash`を実行
+2. ターミナルが node.js 環境コンテナに接続される
+   - プロンプトが `node@******~/app$` のようになっていれば OK
+   - コンテナ接続直後のカレントディレクトリ(`/home/node/app`)の内容が、コンテナ外のプロジェクトディレクトリ以下に同期される
+
+#### VSCode の場合
+
+1. 拡張機能 ｢Remote - Containers｣ をインストール
+2. 左下の青い部分をクリックすると出てくるメニュー or コマンドパレットで `Attach to Running Container...` を選択
+3. `node-env`を選択 → 新しい VSCode のウィンドウが開く
+4. 新しく開いた VSCode で ｢フォルダを開く｣ → `/home/node/app` を選択
+5. コンテナ外のプロジェクトディレクトリと同じ内容がエクスプローラーに表示されれば OK
+   - このディレクトリの内容が、コンテナ外のプロジェクトディレクトリ以下に同期される
+
+### 動作確認
+
+1. http://localhost:8080/ にアクセス
+2. 画面が表示されたら OK
 
 ## これまで
 
