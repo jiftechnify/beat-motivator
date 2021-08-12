@@ -1,6 +1,5 @@
 FROM node:16
 
-WORKDIR /home/node/app
-USER node
+WORKDIR /app
 
 ENTRYPOINT ["/bin/bash"]
