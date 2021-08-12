@@ -405,7 +405,3 @@ window.onload = function () {
 function toggleHeatmap(checked) {
   document.getElementById("statistics").classList.toggle("heatmap", checked);
 }
-
-function a() {
-  console.log("a");
-}
