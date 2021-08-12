@@ -143,7 +143,7 @@ function processCsv(csv) {
         temp["title"] = song["title"];
         temp["difficulty"] = difficulty;
         temp["score"] = song[difficulty + "_score"];
-        if (master_data_song[key]) {
+        if (master_data_song[key] && master_data_song[key]["level"] !== "-1") {
           temp["rate"] =
             song[difficulty + "_score"] / master_data_song[key]["notes"] / 2;
           temp["notes"] = master_data_song[key]["notes"];
@@ -212,8 +212,10 @@ function processCsv(csv) {
     stats[s["level"]]["average_rate"] += s["rate"]; // will be devined by "played"
     if (s["max-"] < 10) {
       stats[s["level"]]["1keta"]++;
+      console.log("max- 1keta?:", s.title, s.difficulty);
     } else if (s["max-"] < 100) {
       stats[s["level"]]["2keta"]++;
+      console.log("max- 2keta?:", s.title, s.difficulty);
     }
     if (s["rate"] >= 0.99) {
       stats[s["level"]]["99%"]++;
