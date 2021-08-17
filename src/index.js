@@ -1,3 +1,5 @@
+import { hoge } from "./hoge";
+
 const HEATMAP_BACKGROUND_COLOR = "17, 139, 238";
 
 let raw_data;
@@ -398,6 +400,7 @@ function createStatisticsCell(row, name) {
 }
 
 window.onload = function () {
+  hoge();
   let button = document.getElementById("sub");
 
   getMusicData();
